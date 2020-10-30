@@ -1,1 +1,850 @@
-[{"id":"ae8bafa7.023bf","type":"tab","label":"フロー 1","disabled":false,"info":""},{"id":"fd2dac08.774e5","type":"serial-port","serialport":"/dev/ttyAMA0","serialbaud":"921600","databits":"8","parity":"none","stopbits":"1","waitfor":"","dtr":"none","rts":"none","cts":"none","dsr":"none","newline":"100","bin":"false","out":"time","addchar":"\\n","responsetimeout":"10000"},{"id":"a569fd3e.f754e8","type":"serial in","z":"ae8bafa7.023bf","name":"","serial":"fd2dac08.774e5","x":310,"y":180,"wires":[["27f4b7a6.7881f"]]},{"id":"192374dc.20c0eb","type":"serial out","z":"ae8bafa7.023bf","name":"","serial":"fd2dac08.774e5","x":560,"y":100,"wires":[]},{"id":"5b8220e.4bca2e","type":"inject","z":"ae8bafa7.023bf","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"1","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":310,"y":100,"wires":[["192374dc.20c0eb"]]},{"id":"27f4b7a6.7881f","type":"debug","z":"ae8bafa7.023bf","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","statusVal":"","statusType":"auto","x":530,"y":180,"wires":[]}]
+[
+    {
+        "id": "ae8bafa7.023bf",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4447456b.94ba2c",
+        "type": "tab",
+        "label": "フロー 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "267e7c7f.be4d34",
+        "type": "subflow",
+        "name": "interval",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "1cd8ac76.ef003c"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "81f0c706.e69ea",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "fd2dac08.774e5",
+        "type": "serial-port",
+        "serialport": "/dev/ttyAMA0",
+        "serialbaud": "921600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "4ba31671.4e731",
+        "type": "ui_tab",
+        "name": "raspbridge",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2bf4d0af.c57c",
+        "type": "ui_group",
+        "name": "受信",
+        "tab": "4ba31671.4e731",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "21886cbd.8758dc",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED ダッシュボード",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "413d728f.786084",
+        "type": "ui_group",
+        "name": "VHF",
+        "tab": "4ba31671.4e731",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f3709e5d.70df8",
+        "type": "ui_group",
+        "name": "UHF",
+        "tab": "4ba31671.4e731",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a569fd3e.f754e8",
+        "type": "serial in",
+        "z": "ae8bafa7.023bf",
+        "name": "受信",
+        "serial": "fd2dac08.774e5",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "80bcf8dd.04a06",
+                "63432747.8ec85"
+            ]
+        ]
+    },
+    {
+        "id": "192374dc.20c0eb",
+        "type": "serial out",
+        "z": "ae8bafa7.023bf",
+        "name": "送信",
+        "serial": "fd2dac08.774e5",
+        "x": 750,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "63432747.8ec85",
+        "type": "switch",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "property": "payload[0]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "-",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "@",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 250,
+        "y": 340,
+        "wires": [
+            [
+                "796547cf.e5da7"
+            ],
+            [
+                "a9d6b5aa.342898"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "1b58ac6.359d454",
+        "type": "ui_template",
+        "z": "ae8bafa7.023bf",
+        "group": "2bf4d0af.c57c",
+        "name": "",
+        "order": 1,
+        "width": 6,
+        "height": 5,
+        "format": "\n<div>\n<p  ng-repeat=\"m in msg.payload track by $index\">{{m}}</p>\n</div>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 500,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80bcf8dd.04a06",
+        "type": "function",
+        "z": "ae8bafa7.023bf",
+        "name": "受信モニター",
+        "func": "let st = msg.payload\n\nlet buf = context.get(\"buf\") || []\nlet cnt = context.get(\"cnt\") || 0\n\nbuf.push(cnt % 10 + \":\" + st)\nwhile (buf.length > 10) {\n    buf.shift()\n} \n\ncontext.set(\"buf\", buf)\ncontext.set(\"cnt\", ++cnt)\n\nmsg.payload = buf\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "1b58ac6.359d454"
+            ]
+        ]
+    },
+    {
+        "id": "a9d6b5aa.342898",
+        "type": "function",
+        "z": "ae8bafa7.023bf",
+        "name": "set VHF",
+        "func": "let st = String(msg.payload)\n\nlet len = \"**************xxxxxxxx\".length\n\nst = st.slice(1)\nst = st.slice(0, -1)\n\nif (st.length == len) {\n    flow.set(\"VHF\", st)\n    msg.payload = \"OK\"\n} else {\n    msg.payload = \"NG\"\n}\n\n// msg.payload = st\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "7513f9cb.a46f3"
+            ]
+        ]
+    },
+    {
+        "id": "b3a2fa6e.bfa79",
+        "type": "inject",
+        "z": "ae8bafa7.023bf",
+        "name": "test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 440,
+        "wires": [
+            [
+                "c9e45fd2.c3c9c"
+            ]
+        ]
+    },
+    {
+        "id": "7513f9cb.a46f3",
+        "type": "debug",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "c9e45fd2.c3c9c",
+        "type": "function",
+        "z": "ae8bafa7.023bf",
+        "name": "@1*************xxxxxxxx",
+        "func": "msg.payload = \"@1*************xxxxxxxx\\n\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 260,
+        "y": 440,
+        "wires": [
+            [
+                "a9d6b5aa.342898"
+            ]
+        ]
+    },
+    {
+        "id": "c0dd4965.22177",
+        "type": "function",
+        "z": "ae8bafa7.023bf",
+        "name": "get VHF",
+        "func": "let st = flow.get(\"VHF\") || \"**************xxxxxxxx\"\n\nmsg.payload = \"+\" + st + \"\\n\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 720,
+        "wires": [
+            [
+                "192374dc.20c0eb"
+            ]
+        ]
+    },
+    {
+        "id": "859f3d5f.ddff6",
+        "type": "inject",
+        "z": "ae8bafa7.023bf",
+        "name": "test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 480,
+        "wires": [
+            [
+                "2a7513f4.3fa214"
+            ]
+        ]
+    },
+    {
+        "id": "2a7513f4.3fa214",
+        "type": "function",
+        "z": "ae8bafa7.023bf",
+        "name": "@2*************xxxxxxxx",
+        "func": "msg.payload = \"@2*************xxxxxxxx\\n\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 260,
+        "y": 480,
+        "wires": [
+            [
+                "a9d6b5aa.342898"
+            ]
+        ]
+    },
+    {
+        "id": "796547cf.e5da7",
+        "type": "serial out",
+        "z": "ae8bafa7.023bf",
+        "name": "送信",
+        "serial": "fd2dac08.774e5",
+        "x": 430,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "cd51f0ed.84eb48",
+        "type": "inject",
+        "z": "ae8bafa7.023bf",
+        "name": "00000000000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "00000000000",
+        "payloadType": "str",
+        "x": 110,
+        "y": 560,
+        "wires": [
+            [
+                "adbf4145.c243d8"
+            ]
+        ]
+    },
+    {
+        "id": "130425cb.0eff62",
+        "type": "inject",
+        "z": "ae8bafa7.023bf",
+        "name": "FFFFFFFFFFF",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 600,
+        "wires": [
+            [
+                "adbf4145.c243d8"
+            ]
+        ]
+    },
+    {
+        "id": "adbf4145.c243d8",
+        "type": "change",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "UHF",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9f0d1917.34194",
+        "type": "ui_slider",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "label": "Hz",
+        "tooltip": "",
+        "group": "413d728f.786084",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": "20",
+        "step": "1",
+        "x": 230,
+        "y": 720,
+        "wires": [
+            [
+                "56fb4df3.0a6fac"
+            ]
+        ]
+    },
+    {
+        "id": "81f0c706.e69ea",
+        "type": "configurable interval",
+        "z": "267e7c7f.be4d34",
+        "name": "configurable interval",
+        "interval": 10,
+        "onstart": false,
+        "do_enable": false,
+        "msg": "ping",
+        "showstatus": false,
+        "unit": "seconds",
+        "statusformat": "YYYY-MM-D HH:mm:ss",
+        "x": 580,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a5b3f1aa.59d3b8",
+        "type": "change",
+        "z": "267e7c7f.be4d34",
+        "name": "interval",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval_value",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "interval",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "81f0c706.e69ea"
+            ]
+        ]
+    },
+    {
+        "id": "c90fff80.7b6dd",
+        "type": "function",
+        "z": "267e7c7f.be4d34",
+        "name": "Hz",
+        "func": "msg.payload = 1.0 / msg.payload\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "a5b3f1aa.59d3b8",
+                "7a0ec804.3d32b"
+            ]
+        ]
+    },
+    {
+        "id": "f6db821e.c0583",
+        "type": "change",
+        "z": "267e7c7f.be4d34",
+        "name": "disabled",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "disabled",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "81f0c706.e69ea"
+            ]
+        ]
+    },
+    {
+        "id": "1cd8ac76.ef003c",
+        "type": "switch",
+        "z": "267e7c7f.be4d34",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "f6db821e.c0583"
+            ],
+            [
+                "c90fff80.7b6dd"
+            ]
+        ]
+    },
+    {
+        "id": "7a0ec804.3d32b",
+        "type": "change",
+        "z": "267e7c7f.be4d34",
+        "name": "enabled",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "enabled",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "81f0c706.e69ea"
+            ]
+        ]
+    },
+    {
+        "id": "45d738d5.a11588",
+        "type": "inject",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 100,
+        "y": 720,
+        "wires": [
+            [
+                "9f0d1917.34194",
+                "8f2b05e8.ae44b"
+            ]
+        ]
+    },
+    {
+        "id": "56fb4df3.0a6fac",
+        "type": "subflow:267e7c7f.be4d34",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "env": [],
+        "x": 420,
+        "y": 720,
+        "wires": [
+            [
+                "c0dd4965.22177"
+            ]
+        ]
+    },
+    {
+        "id": "8f2b05e8.ae44b",
+        "type": "ui_slider",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "label": "Hz",
+        "tooltip": "",
+        "group": "f3709e5d.70df8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": "20",
+        "step": "1",
+        "x": 230,
+        "y": 800,
+        "wires": [
+            [
+                "92852cc4.af396"
+            ]
+        ]
+    },
+    {
+        "id": "92852cc4.af396",
+        "type": "subflow:267e7c7f.be4d34",
+        "z": "ae8bafa7.023bf",
+        "x": 420,
+        "y": 800,
+        "wires": [
+            [
+                "32a73e0b.5ea782"
+            ]
+        ]
+    },
+    {
+        "id": "32a73e0b.5ea782",
+        "type": "function",
+        "z": "ae8bafa7.023bf",
+        "name": "get VHF",
+        "func": "let st = flow.get(\"UHF\") || \"00000000\"\n\nmsg.payload = \"#\" + st + \"\\n\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 800,
+        "wires": [
+            [
+                "192374dc.20c0eb"
+            ]
+        ]
+    },
+    {
+        "id": "5704c99f.3e909",
+        "type": "inject",
+        "z": "ae8bafa7.023bf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "[\"\",\"\"]",
+        "payloadType": "json",
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "1b58ac6.359d454"
+            ]
+        ]
+    }
+]
